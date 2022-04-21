@@ -13,6 +13,24 @@ pipeline {
                 }
             }
         }
+        stage ("Paso 2: approval") {
+            steps {
+                script {
+                    env.APPROVE = input message: 'Press y to approve',
+                                        parameters: [string(defaultValue: 'n',
+                                                    description: '',
+                                                    name: 'Approve')]
+                    }
+                    echo "Approve: ${env.APPROVE}"
+            }
+        }
+        stage ("Paso 3: approval result") {
+            steps {
+                script {
+                    echo "Approve: ${env.APPROVE}"
+                }
+            }
+        }
         // stage("Paso 2: Testear"){
         //     steps {
         //         script {
