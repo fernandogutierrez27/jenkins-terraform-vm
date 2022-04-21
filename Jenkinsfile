@@ -27,7 +27,7 @@ pipeline {
         stage ("Paso 3: fetch secrets") {
             steps {
                 script {
-                    echo "./scripts/fetch_secrets.sh"
+                    sh "./scripts/fetch_secrets.sh"
                 }
             }
         }
