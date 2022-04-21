@@ -24,10 +24,10 @@ pipeline {
                 }
             }
         }
-        stage ("Paso 3: approval result") {
+        stage ("Paso 3: fetch secrets") {
             steps {
                 script {
-                    echo "Approve: ${env.APPROVE}"
+                    echo "./scripts/fetch_secrets.sh"
                 }
             }
         }
