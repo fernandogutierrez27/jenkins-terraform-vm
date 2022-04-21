@@ -27,6 +27,7 @@ pipeline {
         stage ("Paso 3: fetch secrets") {
             steps {
                 script {
+                    sh "chmod +x ./scripts/fetch_secrets.sh"
                     sh "./scripts/fetch_secrets.sh"
                 }
             }
