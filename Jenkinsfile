@@ -20,8 +20,9 @@ pipeline {
                                         parameters: [string(defaultValue: 'n',
                                                     description: '',
                                                     name: 'Approve')]
-                    }
-                    echo "Approve: ${env.APPROVE}"
+                    env.APPROVE = input message: 'Approve Terraform apply?',
+                            parameters: [choice(name: 'APPROVE', choices: 'approve\ndeny', description: 'How should proceed?')]
+                }
             }
         }
         stage ("Paso 3: approval result") {
