@@ -16,12 +16,11 @@ pipeline {
         stage ("Paso 2: approval") {
             steps {
                 script {
-                    env.APPROVE = input message: 'Press y to approve',
-                                        parameters: [string(defaultValue: 'n',
-                                                    description: '',
-                                                    name: 'Approve')]
-                    env.APPROVE = input message: 'Approve Terraform apply?',
-                            parameters: [choice(name: 'APPROVE', choices: 'approve\ndeny', description: 'How should proceed?')]
+                    // env.APPROVE = input message: 'Press y to approve',
+                    //                     parameters: [string(defaultValue: 'n',
+                    //                                 description: '',
+                    //                                 name: 'Approve')]
+                    input message: 'Approve Terraform apply?'
                 }
             }
         }
