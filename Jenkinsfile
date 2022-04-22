@@ -5,6 +5,11 @@ pipeline {
         githubPush()
     }
 
+    // environment {
+    //     ARM_SUBSCRIPTION_ID = 'fc8171ee-10a5-4635-8fd1-0c45800663f1'
+    //     ARM_TENANT_ID       = 'fa587b31-1be9-4b24-b7d6-b163f0a2fcdf'
+    // }
+
     stages {
         stage("Paso 1: Hola mundo"){
             steps {
@@ -18,15 +23,17 @@ pipeline {
             steps {
                 script {
                     sh "chmod +x ./scripts/fetch_secrets.sh"
-                    sh "./scripts/fetch_secrets.sh"
+                    // sh "./scripts/fetch_secrets.sh"
                 }
             }
         }
         stage ("Paso 3: terraform plan") {
             steps {
+                // withEnvironment([])
                 script {
                     echo "terraform plan"
-                    sh "echo 'client_id ${env.ARM_CLIENT_ID}'"
+                    sh "./scripts/fetch_secrets.sh"
+                    sh "echo 'client_id $ARM_CLIENT_ID'"
                     sh "terraform plan"
                 }
             }
@@ -42,6 +49,7 @@ pipeline {
             steps {
                 script {
                     echo "terraform apply!"
+                    sh "./scripts/fetch_secrets.sh"
                     sh "terraform apply -auto-approve"
                 }
             }
