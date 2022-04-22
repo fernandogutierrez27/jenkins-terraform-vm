@@ -1,5 +1,5 @@
 resource "azurerm_virtual_network" "this" {
-    name                    = "grupo1-vnet"
+    name                    = "grupo1-devops-vnet"
     address_space           = ["12.0.0.0/16"]
     location                = azurerm_resource_group.this.location
     resource_group_name     = azurerm_resource_group.this.name
