@@ -15,48 +15,54 @@ pipeline {
     // }
 
     stages {
-        stage("Paso 1: Hola mundo"){
-            steps {
-                script {
-                    sh "echo 'Hola Mundo!'"
-                    sh "terraform init"
-                }
-            }
+        stage("test env") {
+            sh "echo 'Env variables test'"
+            sh '''
+                echo "subs_id $ARM_SUBSCRIPTION_ID"
+            '''
         }
-        stage ("Paso 2: fetch secrets") {
-            steps {
-                script {
-                    sh "chmod +x ./scripts/fetch_secrets.sh"
-                    // sh "./scripts/fetch_secrets.sh"
-                }
-            }
-        }
-        stage ("Paso 3: terraform plan") {
-            steps {
-                // withEnvironment([])
-                script {
-                    echo "terraform plan"
-                    sh "chmod +x ./scripts/terraform-plan.sh"
-                    sh "./scripts/terraform-plan.sh"
-                }
-            }
-        }
-        stage ("Paso 4: Approve apply") {
-            steps {
-                script {
-                    input message: 'Approve Terraform apply?'
-                }
-            }
-        }
-        stage ("Paso 5: terraform apply") {
-            steps {
-                script {
-                    echo "terraform apply!"
-                    sh "chmod +x ./scripts/terraform-apply.sh"
-                    sh "./scripts/terraform-apply.sh"
-                }
-            }
-        }
+        // stage("Paso 1: Hola mundo"){
+        //     steps {
+        //         script {
+        //             sh "echo 'Hola Mundo!'"
+        //             sh "terraform init"
+        //         }
+        //     }
+        // }
+        // stage ("Paso 2: fetch secrets") {
+        //     steps {
+        //         script {
+        //             sh "chmod +x ./scripts/fetch_secrets.sh"
+        //             // sh "./scripts/fetch_secrets.sh"
+        //         }
+        //     }
+        // }
+        // stage ("Paso 3: terraform plan") {
+        //     steps {
+        //         // withEnvironment([])
+        //         script {
+        //             echo "terraform plan"
+        //             sh "chmod +x ./scripts/terraform-plan.sh"
+        //             sh "./scripts/terraform-plan.sh"
+        //         }
+        //     }
+        // }
+        // stage ("Paso 4: Approve apply") {
+        //     steps {
+        //         script {
+        //             input message: 'Approve Terraform apply?'
+        //         }
+        //     }
+        // }
+        // stage ("Paso 5: terraform apply") {
+        //     steps {
+        //         script {
+        //             echo "terraform apply!"
+        //             sh "chmod +x ./scripts/terraform-apply.sh"
+        //             sh "./scripts/terraform-apply.sh"
+        //         }
+        //     }
+        // }
     }
     post {
         always {
