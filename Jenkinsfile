@@ -29,6 +29,7 @@ pipeline {
                 sh '''
                     echo "subs_id $ARM_SUBSCRIPTION_ID"
                     echo "subs_id2 $ARM_SUBSCRIPTION_ID2"
+                    echo "workspace $WS"
                 '''
             }
         }
