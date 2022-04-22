@@ -5,6 +5,10 @@ pipeline {
         githubPush()
     }
 
+    options {
+        ansiColor('xterm')
+    }
+
     // environment {
     //     ARM_SUBSCRIPTION_ID = 'fc8171ee-10a5-4635-8fd1-0c45800663f1'
     //     ARM_TENANT_ID       = 'fa587b31-1be9-4b24-b7d6-b163f0a2fcdf'
