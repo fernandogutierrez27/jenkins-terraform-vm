@@ -33,7 +33,7 @@ pipeline {
                 script {
                     echo "terraform plan"
                     sh "./scripts/fetch_secrets.sh"
-                    sh "echo 'client_id $ARM_CLIENT_ID'"
+                    // sh "echo 'client_id $ARM_CLIENT_ID'"
                     sh "terraform plan"
                 }
             }
