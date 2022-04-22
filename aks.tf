@@ -20,7 +20,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     client_secret   = data.azurerm_key_vault_secret.client_secret.value
   }
 
-  network_profile = {
+  network_profile {
     network_plugin  = "azure"
     network_policy  = "azure"
   }
