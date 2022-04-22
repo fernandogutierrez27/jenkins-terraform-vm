@@ -3,7 +3,7 @@ resource "azurerm_kubernetes_cluster" "this" {
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   dns_prefix          = "aks1"
-  kubernetes_version  = "1.18.14"
+#   kubernetes_version  = "1.18.14"
 
   default_node_pool {
     name                = "default"
