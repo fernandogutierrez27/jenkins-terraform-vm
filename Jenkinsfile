@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     echo "terraform plan"
-                    sh "echo 'client_id $ARM_CLIENT_ID'"
+                    sh "echo 'client_id ${env.ARM_CLIENT_ID}'"
                     sh "terraform plan"
                 }
             }
