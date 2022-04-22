@@ -15,14 +15,14 @@ pipeline {
     // }
 
     stages {
-        stage ("Paso 0: fetch secrets") {
-            steps {
-                script {
-                    sh "chmod +x ./scripts/fetch_secrets.sh"
-                    sh "./scripts/fetch_secrets.sh"
-                }
-            }
-        }
+        // stage ("Paso 0: fetch secrets") {
+        //     steps {
+        //         script {
+        //             sh "chmod +x ./scripts/fetch_secrets.sh"
+        //             sh "./scripts/fetch_secrets.sh"
+        //         }
+        //     }
+        // }
         stage("test env") {
             steps {
                 sh "echo 'Env variables test'"
