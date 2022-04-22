@@ -48,8 +48,8 @@ pipeline {
             steps {
                 script {
                     echo "terraform apply!"
-                    sh "./scripts/fetch_secrets.sh"
-                    sh "terraform apply -auto-approve"
+                    sh "chmod +x ./scripts/terraform-apply.sh"
+                    sh "./scripts/terraform-apply.sh"
                 }
             }
         }
