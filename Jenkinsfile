@@ -16,10 +16,12 @@ pipeline {
 
     stages {
         stage("test env") {
-            sh "echo 'Env variables test'"
-            sh '''
-                echo "subs_id $ARM_SUBSCRIPTION_ID"
-            '''
+            steps {
+                sh "echo 'Env variables test'"
+                sh '''
+                    echo "subs_id $ARM_SUBSCRIPTION_ID"
+                '''
+            }
         }
         // stage("Paso 1: Hola mundo"){
         //     steps {
