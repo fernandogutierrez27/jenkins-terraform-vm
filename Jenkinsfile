@@ -32,9 +32,8 @@ pipeline {
                 // withEnvironment([])
                 script {
                     echo "terraform plan"
-                    sh "./scripts/fetch_secrets.sh"
-                    // sh "echo 'client_id $ARM_CLIENT_ID'"
-                    sh "terraform plan"
+                    sh "chmod +x ./scripts/terraform-plan.sh"
+                    sh "./scripts/terraform-plan.sh"
                 }
             }
         }
