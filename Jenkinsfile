@@ -20,7 +20,7 @@ pipeline {
                 script {
                     sh "chmod +x ./scripts/fetch_secrets.sh"
                     sh "./scripts/fetch_secrets.sh"
-                    sh "cat /var/public/jenkins/terraform.properties"
+                    sh "cat /var/jenkins_home/terraform.properties"
                 }
             }
         }
