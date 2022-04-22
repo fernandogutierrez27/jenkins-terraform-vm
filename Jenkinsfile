@@ -57,11 +57,6 @@ pipeline {
     post {
         always {
             sh "echo 'fase always executed post'"
-            echo "cleaning secrets"
-            sh "export ARM_CLIENT_ID=''"
-            sh "export ARM_CLIENT_SECRET=''"
-            sh "export ARM_SUBSCRIPTION_ID=''"
-            sh "export ARM_TENANT_ID=''"
         }
         success {
             sh "echo 'fase success'"
