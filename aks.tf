@@ -28,12 +28,12 @@ resource "azurerm_kubernetes_cluster" "this" {
 
 resource "azurerm_key_vault_secret" "aks_winprofile_username" {
   name         = "aks-winprofile-admin-username"
-  value        = azurerm_kubernetes_cluster.this.windows_profile.admin_username
+  value        = azurerm_kubernetes_cluster.this.windows_profile[0].admin_username
   key_vault_id = data.azurerm_key_vault.this.id
 }
 
 resource "azurerm_key_vault_secret" "aks_winprofile_password" {
   name         = "aks-winprofile-admin-password"
-  value        = azurerm_kubernetes_cluster.this.windows_profile.admin_password
+  value        = azurerm_kubernetes_cluster.this.windows_profile[0].admin_password
   key_vault_id = data.azurerm_key_vault.this.id
 }
