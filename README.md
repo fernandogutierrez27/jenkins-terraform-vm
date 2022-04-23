@@ -54,5 +54,5 @@
 | <a name="output_aks_portal_fqdn"></a> [aks\_portal\_fqdn](#output\_aks\_portal\_fqdn) | FQDN del Portal del cluster de AKS |
 
 ---
-\_Documentación generada con [terraform-docs](https://github.com/terraform-docs/terraform-docs)\_
+*Documentación generada con [terraform-docs](https://github.com/terraform-docs/terraform-docs)*
 <!-- END_TF_DOCS -->
