@@ -1,7 +1,7 @@
 # jenkins-terraform
-PoC para ejecución de Terraform en Jenkins  
-Grupo 1  
-Diplomado DevOps - USACH
+##### PoC para ejecución de Terraform en Jenkins  
+>Grupo 1  
+>Diplomado DevOps - USACH
 
 ## Integrantes
 - Luis Anguita
