@@ -38,6 +38,8 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_aks_subnet"></a> [aks\_subnet](#input\_aks\_subnet) | Configuración básica para la subnet usada por AKS | <pre>object({<br>        name                = string<br>        address_prefixes    = list(string)<br>    })</pre> | n/a | yes |
 | <a name="input_aks_vnet"></a> [aks\_vnet](#input\_aks\_vnet) | Configuración básica para la vnet usada por AKS | <pre>object({<br>        name            = string<br>        address_space   = list(string)<br>    })</pre> | n/a | yes |
+| <a name="input_akv_name"></a> [akv\_name](#input\_akv\_name) | El nombre del Azure Key Vault que almacena los secretos | `string` | n/a | yes |
+| <a name="input_akv_resource_group"></a> [akv\_resource\_group](#input\_akv\_resource\_group) | El nombre del resource group donde se encuentra el Azure Key Vault | `string` | n/a | yes |
 | <a name="input_client_id_secret_name"></a> [client\_id\_secret\_name](#input\_client\_id\_secret\_name) | Nombre del secreto que almacena el client\_id del SP | `string` | n/a | yes |
 | <a name="input_client_secret_secret_name"></a> [client\_secret\_secret\_name](#input\_client\_secret\_secret\_name) | Nombre del secreto que almacena el client\_secret del SP | `string` | n/a | yes |
 | <a name="input_container_registry"></a> [container\_registry](#input\_container\_registry) | Configuración básica de ACR | <pre>object({<br>        name            = string<br>        sku             = string<br>        admin_enabled   = bool<br>    })</pre> | n/a | yes |

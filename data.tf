@@ -1,6 +1,6 @@
 data "azurerm_key_vault" "this" {
-  name                = "diplomado-devops-akv"
-  resource_group_name = "diplomado-devops-rg"
+  name                = var.akv_name
+  resource_group_name = var.akv_resource_group
 }
 
 data "azurerm_key_vault_secret" "client_id" {

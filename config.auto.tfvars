@@ -2,6 +2,8 @@ resource_group_name         = "terraform-aks-arg"
 region                      = "West US 2"
 client_id_secret_name       = "sp-tf-id"
 client_secret_secret_name   = "sp-tf-password"
+akv_name                    = "diplomado-devops-akv"
+akv_resource_group          = "diplomado-devops-rg"
 
 kubernetes_cluster = {
     name            = "grupo1-devops-aks"

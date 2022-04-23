@@ -26,25 +26,6 @@ variable "kubernetes_cluster" {
     })
 }
 
-variable "container_registry" {
-    description = "Configuración básica de ACR"
-    type = object({
-        name            = string
-        sku             = string
-        admin_enabled   = bool
-    })
-}
-
-variable "client_id_secret_name" {
-    description = "Nombre del secreto que almacena el client_id del SP"
-    type        = string
-}
-
-variable "client_secret_secret_name" {
-    description = "Nombre del secreto que almacena el client_secret del SP"
-    type        = string
-}
-
 variable "aks_vnet" {
     description = "Configuración básica para la vnet usada por AKS"
     type = object({
@@ -59,4 +40,33 @@ variable "aks_subnet" {
         name                = string
         address_prefixes    = list(string)
     })
+}
+
+variable "container_registry" {
+    description = "Configuración básica de ACR"
+    type = object({
+        name            = string
+        sku             = string
+        admin_enabled   = bool
+    })
+}
+
+variable "akv_name" {
+  description = "El nombre del Azure Key Vault que almacena los secretos"
+  type        = string
+}
+
+variable "akv_resource_group" {
+  description = "El nombre del resource group donde se encuentra el Azure Key Vault"
+  type        = string
+}
+
+variable "client_id_secret_name" {
+    description = "Nombre del secreto que almacena el client_id del SP"
+    type        = string
+}
+
+variable "client_secret_secret_name" {
+    description = "Nombre del secreto que almacena el client_secret del SP"
+    type        = string
 }
