@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "pwd"
 pwd
 ./scripts/fetch_secrets.sh

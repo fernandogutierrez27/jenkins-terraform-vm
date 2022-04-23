@@ -1,3 +1,4 @@
+#!/bin/bash
 az login --identity --allow-no-subscriptions --output none
 
 export ARM_SUBSCRIPTION_ID=fc8171ee-10a5-4635-8fd1-0c45800663f1
