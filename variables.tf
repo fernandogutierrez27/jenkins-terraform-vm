@@ -60,19 +60,3 @@ variable "aks_subnet" {
         address_prefixes    = list(string)
     })
 }
-
-# variable "tags" {
-#   description = "A mapping of tags to assign to the resources."
-#   type        = map(any)
-# }
-
-# variable "app_service_plan" {
-#   description = "Object that contains the details for App Service Plan Resource"
-#   type = object({
-#     name     = string
-#     tier     = string
-#     size     = string
-#     capacity = string
-#     kind     = string
-#   })
-# }
