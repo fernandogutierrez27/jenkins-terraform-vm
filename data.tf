@@ -4,11 +4,11 @@ data "azurerm_key_vault" "this" {
 }
 
 data "azurerm_key_vault_secret" "client_id" {
-  name         = "sp-tf-id"
+  name         = var.client_id_secret_name
   key_vault_id = data.azurerm_key_vault.this.id
 }
 
 data "azurerm_key_vault_secret" "client_secret" {
-  name         = "sp-tf-password"
+  name         = var.client_secret_secret_name
   key_vault_id = data.azurerm_key_vault.this.id
 }

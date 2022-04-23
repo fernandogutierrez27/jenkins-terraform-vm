@@ -31,27 +31,25 @@ pipeline {
             steps {
                 script {
                     echo "Terraform plan"
-                    sh "chmod +x ./scripts/terraform-plan.sh"
                     sh "./scripts/terraform-plan.sh"
                 }
             }
         }
-        // stage ("Paso 4: Approve apply") {
-        //     steps {
-        //         script {
-        //             input message: 'Approve Terraform apply?'
-        //         }
-        //     }
-        // }
-        // stage ("Paso 5: terraform apply") {
-        //     steps {
-        //         script {
-        //             echo "terraform apply!"
-        //             sh "chmod +x ./scripts/terraform-apply.sh"
-        //             sh "./scripts/terraform-apply.sh"
-        //         }
-        //     }
-        // }
+        stage ("Paso 4: Approve apply") {
+            steps {
+                script {
+                    input message: 'Approve Terraform apply?'
+                }
+            }
+        }
+        stage ("Paso 5: terraform apply") {
+            steps {
+                script {
+                    echo "Terraform apply!"
+                    sh "./scripts/terraform-apply.sh"
+                }
+            }
+        }
     }
     post {
         always {
