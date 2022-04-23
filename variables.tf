@@ -13,7 +13,7 @@ variable "kubernetes_cluster" {
     type = object({
         name            = string
         dns_prefix      = string
-        network_profile = string
+        network_plugin  = string
         network_policy  = string
         default_node_pool = object({
             name                = string
