@@ -12,6 +12,14 @@ vm_list = {
     "vm1" = {
         name    = "vm1"
         size    = "Standard_B1s"
+    },
+    "vm2" = {
+        name    = "vm2"
+        size    = "Standard_B1s"
+    },
+    "vm3" = {
+        name    = "vm3"
+        size    = "Standard_B1s"
     }
 }
 
