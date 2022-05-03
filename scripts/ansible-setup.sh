@@ -1,8 +1,11 @@
 #!/bin/bash
+export ANSIBLE_HOST_KEY_CHECKING=False
+
 az login --identity --allow-no-subscriptions --output none
 
 # Leer IPs desde az-cli y generar archivo ansible-hosts
 > ansible-hosts #clean ansible-hosts
+> /var/jenkins_home/.ssh/known_hosts
 # TODO: resolver como obtener valor de terraform-vms-rg
 az vm list -g terraform-vms-rg --query "[].privateIps" -d | jq -c '.[]' | while read object; do
     echo "$object" >> ansible-hosts
