@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "this" {
     ip_configuration {
         name                          = "${each.value.name}-nicconf"
         subnet_id                     = azurerm_subnet.this.id
-        private_ip_address_allocation = "dynamic"
+        private_ip_address_allocation = "Dynamic"
         # public_ip_address_id          = azurerm_public_ip.this.id
     }
 }
@@ -81,6 +81,7 @@ resource "azurerm_linux_virtual_machine" "this" {
     name                  = "${each.value.name}-vm"
 
     location              = azurerm_resource_group.this.location
+    availability_set_id   = azurerm_availability_set.this.id
     resource_group_name   = azurerm_resource_group.this.name
     network_interface_ids = [azurerm_network_interface.this[each.key].id]
     size                  = "${each.value.size}"#"Standard_B1s"
