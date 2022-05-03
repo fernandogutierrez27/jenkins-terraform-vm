@@ -1,11 +1,6 @@
 resource_group_name         = "terraform-vms-rg"
 region                      = "Brazil South"
 
-vm_vnet = {
-    name            = "devopslab-vnet"
-    address_space   = ["10.0.0.0/16"]
-}
-
 vm_subnet = {
     name                = "vms-subnet"
     address_prefixes    = ["10.0.1.0/24"]
