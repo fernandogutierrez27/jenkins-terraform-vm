@@ -33,7 +33,7 @@
 | <a name="input_nsg_rules"></a> [nsg\_rules](#input\_nsg\_rules) | Listado de NSG rules a aplicar | <pre>list(<br>        object({<br>            name                       = string<br>            priority                   = number<br>            direction                  = string<br>            access                     = string<br>            protocol                   = string<br>            source_port_range          = string<br>            destination_port_range     = string<br>            source_address_prefix      = string<br>            destination_address_prefix = string<br>        })<br>    )</pre> | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | La región donde se desplegarán los recursos | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | El nombre del grupo de recursos donde se generará el cluster | `string` | n/a | yes |
-| <a name="input_vm_list"></a> [vm\_list](#input\_vm\_list) | Listado de VMs a crear | <pre>map(<br>        object({<br>            vm_name = string<br>            size    = string<br>        })<br>    )</pre> | n/a | yes |
+| <a name="input_vm_list"></a> [vm\_list](#input\_vm\_list) | Listado de VMs a crear | <pre>map(<br>        object({<br>            name = string<br>            size    = string<br>        })<br>    )</pre> | n/a | yes |
 | <a name="input_vm_subnet"></a> [vm\_subnet](#input\_vm\_subnet) | Configuración básica para la subnet usada por las VMs | <pre>object({<br>        name                = string<br>        address_prefixes    = list(string)<br>        resource_group      = string<br>        vnet_name           = string<br>    })</pre> | n/a | yes |
 
 ## Outputs

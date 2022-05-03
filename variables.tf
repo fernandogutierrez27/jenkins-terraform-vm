@@ -32,7 +32,7 @@ variable "vm_list" {
     description = "Listado de VMs a crear"
     type = map(
         object({
-            vm_name = string
+            name = string
             size    = string
         })
     )
