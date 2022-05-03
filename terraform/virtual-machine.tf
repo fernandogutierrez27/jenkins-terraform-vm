@@ -1,11 +1,3 @@
-# resource "azurerm_public_ip" "this" {
-#     for_each = var.vm_list
-#     name                = "each.value.name-pip"
-#     location            = azurerm_resource_group.this.location
-#     resource_group_name = azurerm_resource_group.this.name
-#     allocation_method   = "Dynamic"
-# }
-
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "this" {
     name                = "vms-nsg"
@@ -39,7 +31,7 @@ resource "azurerm_network_interface" "this" {
     ip_configuration {
         name                          = "${each.value.name}-nicconf"
         subnet_id                     = azurerm_subnet.this.id
-        private_ip_address_allocation = "Dynamic"
+        private_ip_address_allocation = "dynamic"
         # public_ip_address_id          = azurerm_public_ip.this.id
     }
 }
