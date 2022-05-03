@@ -2,7 +2,7 @@ resource "azurerm_public_ip" "this" {
     name                = "devopslab-lb-pip"
     location            = azurerm_resource_group.this.location
     resource_group_name = azurerm_resource_group.this.name
-    allocation_method   = "Dynamic"
+    allocation_method   = "dynamic"
 }
 
 resource "azurerm_lb" "this" {
@@ -19,6 +19,12 @@ resource "azurerm_lb" "this" {
 resource "azurerm_lb_backend_address_pool" "this" {
     loadbalancer_id     = azurerm_lb.this.id
     name                = "BackEndAddressPool"
+}
+
+resource "azurerm_lb_probe" "example" {
+    loadbalancer_id = azurerm_lb.this.id
+    name            = "http-probe"
+    port            = 80
 }
 
 resource "azurerm_lb_rule" "http" {
