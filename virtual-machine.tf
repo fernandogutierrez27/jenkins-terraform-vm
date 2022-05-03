@@ -56,7 +56,7 @@ resource "azurerm_network_interface_security_group_association" "this" {
 resource "random_id" "randomId" {
   keepers = {
     # Generate a new ID only when a new resource group is defined
-    resource_group = azurerm_resource_group.rg.name
+    resource_group = azurerm_resource_group.this.name
   }
 
   byte_length = 8
