@@ -78,7 +78,7 @@ resource "tls_private_key" "this" {
 }
 
 resource "azurerm_key_vault_secret" "ssh_private_key" {
-    name            = "vm-ssh-${random_id.randomId.hex}"
+    name            = "ansible-vm-ssh"
     value           = tls_private_key.this.private_key_pem
     key_vault_id    = data.azurerm_key_vault.this.id
 }
