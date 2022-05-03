@@ -8,46 +8,13 @@ variable "region" {
   type        = string
 }
 
-variable "kubernetes_cluster" {
-    description = "Información básica sobre el cluster de AKS"
-    type = object({
-        name            = string
-        dns_prefix      = string
-        network_plugin  = string
-        network_policy  = string
-        default_node_pool = object({
-            name                = string
-            node_count          = number
-            vm_size             = string
-            enable_auto_scaling = bool
-            max_count           = number
-            min_count           = number
-        })
-    })
-}
-
-variable "aks_vnet" {
-    description = "Configuración básica para la vnet usada por AKS"
-    type = object({
-        name            = string
-        address_space   = list(string)
-    })
-}
-
-variable "aks_subnet" {
-    description = "Configuración básica para la subnet usada por AKS"
+variable "vm_subnet" {
+    description = "Configuración básica para la subnet usada por las VMs"
     type = object({
         name                = string
         address_prefixes    = list(string)
-    })
-}
-
-variable "container_registry" {
-    description = "Configuración básica de ACR"
-    type = object({
-        name            = string
-        sku             = string
-        admin_enabled   = bool
+        resource_group      = string
+        vnet_name           = string
     })
 }
 
@@ -61,12 +28,39 @@ variable "akv_resource_group" {
   type        = string
 }
 
-variable "client_id_secret_name" {
-    description = "Nombre del secreto que almacena el client_id del SP"
-    type        = string
+variable "vm_list" {
+    description = "Listado de VMs a crear"
+    type = map(
+        object({
+            vm_name = string
+            size    = string
+        })
+    )
 }
 
-variable "client_secret_secret_name" {
-    description = "Nombre del secreto que almacena el client_secret del SP"
-    type        = string
+variable "nsg_rules" {
+    description = "Listado de NSG rules a aplicar"
+    type = list(
+        object({
+            name                       = string
+            priority                   = number
+            direction                  = string
+            access                     = string
+            protocol                   = string
+            source_port_range          = string
+            destination_port_range     = string
+            source_address_prefix      = string
+            destination_address_prefix = string
+        })
+    )
 }
+
+# variable "client_id_secret_name" {
+#     description = "Nombre del secreto que almacena el client_id del SP"
+#     type        = string
+# }
+
+# variable "client_secret_secret_name" {
+#     description = "Nombre del secreto que almacena el client_secret del SP"
+#     type        = string
+# }
