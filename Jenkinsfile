@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     sh "echo 'Terraform init!'"
-                    sh "terraform init"
+                    sh "cd ./terraform && terraform init"
                 }
             }
         }
