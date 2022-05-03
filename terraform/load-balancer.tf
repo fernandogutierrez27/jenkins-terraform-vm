@@ -2,7 +2,8 @@ resource "azurerm_public_ip" "this" {
     name                = "devopslab-lb-pip"
     location            = azurerm_resource_group.this.location
     resource_group_name = azurerm_resource_group.this.name
-    allocation_method   = "Dynamic"
+    allocation_method   = "Static"
+    domain_name_label   = "demo-devopslab"
 }
 
 resource "azurerm_lb" "this" {
