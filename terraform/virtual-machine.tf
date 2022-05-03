@@ -85,7 +85,7 @@ resource "azurerm_key_vault_secret" "ssh_private_key" {
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "this" {
-    for_each = var.vm_list
+    for_each              = var.vm_list
     name                  = "${each.value.name}-vm"
 
     location              = azurerm_resource_group.this.location

@@ -1,4 +1,4 @@
 #!/bin/bash
-source ./scripts/fetch_secrets.sh
+source ./scripts/fetch-secrets.sh
 
-terraform plan
+cd ./terraform && terraform plan

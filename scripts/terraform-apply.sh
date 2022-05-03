@@ -1,4 +1,4 @@
 #!/bin/bash
-source ./scripts/fetch_secrets.sh
+source ./scripts/fetch-secrets.sh
 
-terraform apply -auto-approve
+cd ./terraform && terraform apply -auto-approve
