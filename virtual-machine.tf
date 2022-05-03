@@ -107,11 +107,11 @@ resource "azurerm_linux_virtual_machine" "this" {
     }
 
     computer_name                   = "${each.value.name}"
-    admin_username                  = "root"
+    admin_username                  = "ansibleadmin"
     disable_password_authentication = true
 
     admin_ssh_key {
-        username   = "root"
+        username   = "ansibleadmin"
         public_key = tls_private_key.this.public_key_openssh
     }
 
