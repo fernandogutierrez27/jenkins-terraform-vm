@@ -13,6 +13,12 @@
       name: ['nginx']
       state: latest
 
+  - name: clear default nginx site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+    notify: restart nginx
+
   - name: "create www directory"
     file:
       path: /var/www/default
@@ -24,16 +30,10 @@
       src: site/index.html
       dest: /var/www/default/index.html
 
-  - name: clear default nginx site
-    file:
-      path: /etc/nginx/sites-enabled/default
-      state: absent
-    notify: restart nginx
-
   - name: copy nginx site.conf
     template:
       src: site/hello.conf
-      dest: /etc/nginx/sites-enabled/default
+      dest: /etc/nginx/sites-enabled/default/hello.conf
       owner: root
       group: root
       mode: '0644'
