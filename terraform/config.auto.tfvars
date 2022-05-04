@@ -11,10 +11,14 @@ vm_list = {
         name    = "vm2"
         size    = "Standard_B1s"
     },
-#     "vm3" = {
-#         name    = "vm3"
-#         size    = "Standard_B1s"
-#     }
+    "vm3" = {
+        name    = "vm3"
+        size    = "Standard_B1s"
+    },
+    "vm4" = {
+        name    = "vm4"
+        size    = "Standard_B1s"
+    },
 }
 
 nsg_rules = [
