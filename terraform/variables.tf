@@ -8,14 +8,19 @@ variable "region" {
   type        = string
 }
 
-variable "vm_subnet" {
-    description = "Configuración básica para la subnet usada por las VMs"
-    type = object({
-        name                = string
-        address_prefixes    = list(string)
-        resource_group      = string
-        vnet_name           = string
-    })
+# variable "vm_subnet" {
+#     description = "Configuración básica para la subnet usada por las VMs"
+#     type = object({
+#         name                = string
+#         address_prefixes    = list(string)
+#         resource_group      = string
+#         vnet_name           = string
+#     })
+# }
+
+variable "vm_subnet_id" {
+    description = "Identificador de la subnet usada por las VMs"
+    type        = string
 }
 
 variable "akv_name" {

@@ -1,12 +1,6 @@
 resource_group_name         = "terraform-vms-rg"
 region                      = "Brazil South"
-
-vm_subnet = {
-    name                = "vms-subnet"
-    address_prefixes    = ["10.0.1.0/24"]
-    resource_group      = "diplomado-devops-rg"
-    vnet_name           = "diplomado-devops-vnet"
-}
+vm_subnet_id                = "/subscriptions/fc8171ee-10a5-4635-8fd1-0c45800663f1/resourceGroups/diplomado-devops-rg/providers/Microsoft.Network/virtualNetworks/diplomado-devops-vnet/subnets/vms-subnet"
 
 vm_list = {
     "vm1" = {
@@ -17,11 +11,11 @@ vm_list = {
         name    = "vm2"
         size    = "Standard_B1s"
     },
-    "vm3" = {
-        name    = "vm3"
-        size    = "Standard_B1s"
-    }
-}
+#     "vm3" = {
+#         name    = "vm3"
+#         size    = "Standard_B1s"
+#     }
+# }
 
 nsg_rules = [
     {
@@ -43,7 +37,7 @@ nsg_rules = [
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "80"
-        source_address_prefix      = "*"
+        source_address_prefix      = "10.0.1.0/24"
         destination_address_prefix = "*"
     }
 ]
