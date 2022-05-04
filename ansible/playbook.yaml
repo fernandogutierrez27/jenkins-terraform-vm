@@ -29,12 +29,12 @@
 
   - name: copy website
     template:
-      src: ./site/index.html
+      src: site/index.html
       dest: /var/www/default/index.html
 
   - name: copy nginx site.conf
     template:
-      src: ./site/hello.conf
+      src: site/hello.conf
       dest: /etc/nginx/sites-enabled/default/hello.conf
       owner: root
       group: root
