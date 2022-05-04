@@ -20,6 +20,6 @@ chmod 600 "$tempkeyfile"
 echo "$ssh_key" > $tempkeyfile
 
 # Ejecutar Ansible
-ansible all -m ping -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile
+# ansible all -m ping -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile
 ansible-playbook ./ansible/playbook.yaml -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile
 # ssh -i $tempkeyfile ansibleadmin@10.0.1.4
