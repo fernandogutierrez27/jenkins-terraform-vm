@@ -18,19 +18,17 @@
       path: /var/www/default
       state: directory
       mode: '0775'
-      # owner: "{{ ansible_user }}"
-      # group: "{{ ansible_user }}"
+
+  - name: copy website
+    template:
+      src: site/index.html
+      dest: /var/www/default/index.html
 
   - name: clear default nginx site
     file:
       path: /etc/nginx/sites-enabled/default
       state: absent
     notify: restart nginx
-
-  - name: copy website
-    template:
-      src: site/index.html
-      dest: /var/www/default/index.html
 
   - name: copy nginx site.conf
     template:

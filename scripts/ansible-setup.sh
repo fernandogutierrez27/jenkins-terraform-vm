@@ -21,5 +21,5 @@ echo "$ssh_key" > $tempkeyfile
 
 # Ejecutar Ansible
 # ansible all -m ping -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile
-ansible-playbook ./ansible/playbook.yaml -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile
+ansible-playbook ./ansible/playbook.yaml -i ./ansible-hosts -u ansibleadmin --key-file $tempkeyfile -e 'ansible_python_interpreter=/usr/bin/python3'
 # ssh -i $tempkeyfile ansibleadmin@10.0.1.4
