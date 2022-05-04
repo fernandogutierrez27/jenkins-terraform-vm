@@ -27,16 +27,6 @@
       state: absent
     notify: restart nginx
 
-  - name: "sync website"
-    synchronize:
-      src: ./site/
-      dest: /var/www/default
-      archive: no
-      checksum: yes
-      recursive: yes
-      delete: yes
-    become: no
-
   - name: copy website
     template:
       src: ./site/index.html
