@@ -3,6 +3,7 @@ resource "azurerm_network_security_group" "this" {
     name                = "vms-nsg"
     location            = azurerm_resource_group.this.location
     resource_group_name = azurerm_resource_group.this.name
+    tags                = var.tags
 
     dynamic "security_rule" {
         for_each = var.nsg_rules
@@ -27,6 +28,7 @@ resource "azurerm_network_interface" "this" {
     name                = "${each.value.name}-nic"
     location            = azurerm_resource_group.this.location
     resource_group_name = azurerm_resource_group.this.name
+    tags                = var.tags
 
     ip_configuration {
         name                          = "${each.value.name}-nicconf"
@@ -41,14 +43,16 @@ resource "azurerm_network_interface_backend_address_pool_association" "this" {
     network_interface_id    = azurerm_network_interface.this[each.key].id
     ip_configuration_name   = "${each.value.name}-nicconf"
     backend_address_pool_id = azurerm_lb_backend_address_pool.this.id
+    tags                    = var.tags
 }
 
 # Connect the security group to the network interface
 resource "azurerm_network_interface_security_group_association" "this" {
     for_each = var.vm_list
 
-    network_interface_id      = azurerm_network_interface.this[each.key].id
-    network_security_group_id = azurerm_network_security_group.this.id
+    network_interface_id        = azurerm_network_interface.this[each.key].id
+    network_security_group_id   = azurerm_network_security_group.this.id
+    tags                        = var.tags
 }
 
 # Generate random text for a unique storage account name
@@ -63,11 +67,12 @@ resource "random_id" "randomId" {
 
 # Create storage account for boot diagnostics
 resource "azurerm_storage_account" "this" {
-  name                     = "diag${random_id.randomId.hex}stg"
-  location                 = azurerm_resource_group.this.location
-  resource_group_name      = azurerm_resource_group.this.name
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+    name                     = "diag${random_id.randomId.hex}stg"
+    location                 = azurerm_resource_group.this.location
+    resource_group_name      = azurerm_resource_group.this.name
+    account_tier             = "Standard"
+    account_replication_type = "LRS"
+    tags                     = var.tags
 }
 
 # Create (and display) an SSH key
@@ -80,12 +85,14 @@ resource "azurerm_key_vault_secret" "ssh_private_key" {
     name            = "ansible-vm-ssh"
     value           = tls_private_key.this.private_key_pem
     key_vault_id    = data.azurerm_key_vault.this.id
+    tags            = var.tags
 }
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "this" {
     for_each              = var.vm_list
     name                  = "${each.value.name}-vm"
+    tags                  = var.tags
 
     location              = azurerm_resource_group.this.location
     availability_set_id   = azurerm_availability_set.this.id
@@ -97,6 +104,8 @@ resource "azurerm_linux_virtual_machine" "this" {
         name                 = "${each.value.name}-osdisk"
         caching              = "ReadWrite"
         storage_account_type = "Premium_LRS"
+        tags                 = var.tags
+
     }
 
     source_image_reference {

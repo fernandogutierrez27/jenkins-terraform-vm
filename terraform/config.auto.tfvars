@@ -46,5 +46,10 @@ nsg_rules = [
     }
 ]
 
+tags = {
+    "Environment": "Demo"
+    "CreatedBy": "fernando.gutierrez@global.ntt"
+}
+
 akv_name                    = "diplomado-devops-akv"
 akv_resource_group          = "diplomado-devops-rg"

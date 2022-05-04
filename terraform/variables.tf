@@ -60,6 +60,11 @@ variable "nsg_rules" {
     )
 }
 
+variable "tags" {
+    description = "Tags asociados a cada recurso"
+    type = map(string)
+}
+
 # variable "client_id_secret_name" {
 #     description = "Nombre del secreto que almacena el client_id del SP"
 #     type        = string
