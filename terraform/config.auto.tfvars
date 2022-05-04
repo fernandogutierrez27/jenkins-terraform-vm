@@ -15,7 +15,7 @@ vm_list = {
 #         name    = "vm3"
 #         size    = "Standard_B1s"
 #     }
-# }
+}
 
 nsg_rules = [
     {
@@ -44,5 +44,3 @@ nsg_rules = [
 
 akv_name                    = "diplomado-devops-akv"
 akv_resource_group          = "diplomado-devops-rg"
-# client_id_secret_name       = "sp-tf-id"
-# client_secret_secret_name   = "sp-tf-password"
