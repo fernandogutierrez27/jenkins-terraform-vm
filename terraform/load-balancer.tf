@@ -22,14 +22,12 @@ resource "azurerm_lb" "this" {
 resource "azurerm_lb_backend_address_pool" "this" {
     loadbalancer_id     = azurerm_lb.this.id
     name                = "BackEndAddressPool"
-    tags                = var.tags
 }
 
 resource "azurerm_lb_probe" "example" {
     loadbalancer_id = azurerm_lb.this.id
     name            = "http-probe"
     port            = 80
-    tags            = var.tags
 }
 
 resource "azurerm_lb_rule" "http" {

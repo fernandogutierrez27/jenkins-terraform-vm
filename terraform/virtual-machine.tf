@@ -52,7 +52,6 @@ resource "azurerm_network_interface_security_group_association" "this" {
 
     network_interface_id        = azurerm_network_interface.this[each.key].id
     network_security_group_id   = azurerm_network_security_group.this.id
-    tags                        = var.tags
 }
 
 # Generate random text for a unique storage account name
@@ -104,8 +103,6 @@ resource "azurerm_linux_virtual_machine" "this" {
         name                 = "${each.value.name}-osdisk"
         caching              = "ReadWrite"
         storage_account_type = "Premium_LRS"
-        tags                 = var.tags
-
     }
 
     source_image_reference {
