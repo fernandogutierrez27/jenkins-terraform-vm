@@ -32,7 +32,6 @@ resource "azurerm_network_interface" "this" {
         name                          = "${each.value.name}-nicconf"
         subnet_id                     = var.vm_subnet_id
         private_ip_address_allocation = "Dynamic"
-        # public_ip_address_id          = azurerm_public_ip.this.id
     }
 }
 

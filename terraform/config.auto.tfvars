@@ -37,7 +37,7 @@ nsg_rules = [
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "80"
-        source_address_prefix      = "10.0.1.0/24"
+        source_address_prefix      = "*"
         destination_address_prefix = "*"
     }
 ]
