@@ -5,52 +5,51 @@
     - ./vars/default.yaml
 
   tasks:
-    # - name: Install aptitude using apt
-    #   apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+  - name: "apt update"
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
 
-    - name: Install required system packages
-      apt:
-        pkg:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - software-properties-common
-          - python3-pip
-          - virtualenv
-          - python3-setuptools
-        state: latest
-        update_cache: true
+  - name: "install nginx"
+    apt:
+      name: ['nginx']
+      state: latest
 
-    - name: Add Docker GPG apt Key
-      apt_key:
-        url: https://download.docker.com/linux/ubuntu/gpg
-        state: present
+  - name: "create www directory"
+    file:
+      path: /var/www/default
+      state: directory
+      mode: '0775'
+      # owner: "{{ ansible_user }}"
+      # group: "{{ ansible_user }}"
 
-    - name: Add Docker Repository
-      apt_repository:
-        repo: deb https://download.docker.com/linux/ubuntu focal stable
-        state: present
+  - name: delete default nginx site
+    file:
+      path: /etc/nginx/sites-enabled/default
+      state: absent
+    notify: restart nginx
 
-    - name: Update apt and install docker-ce
-      apt:
-        name: docker-ce
-        state: latest
-        update_cache: true
+  - name: "sync website"
+    synchronize:
+      src: ./site/
+      dest: /var/www/default
+      archive: no
+      checksum: yes
+      recursive: yes
+      delete: yes
+    become: no
 
-    - name: Install Docker Module for Python
-      pip:
-        name: docker
+  - name: copy nginx site.conf
+    template:
+      src: ./config/hello.conf
+      dest: /etc/nginx/sites-enabled/default
+      owner: root
+      group: root
+      mode: '0644'
+    notify: restart nginx
 
-    - name: Pull default Docker image
-      docker_image:
-        name: "{{ default_container_image }}"
-        source: pull
-
-    # Creates the number of containers defined by the variable create_containers, using values from vars file
-    - name: Create default containers
-      docker_container:
-        name: "{{ default_container_name }}{{ item }}"
-        image: "{{ default_container_image }}"
-        command: "{{ default_container_command }}"
-        state: present
-      with_sequence: count={{ create_containers }}
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
