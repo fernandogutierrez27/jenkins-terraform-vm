@@ -37,6 +37,11 @@
       delete: yes
     become: no
 
+  - name: copy website
+    template:
+      src: ./site/index.html
+      dest: /var/www/default/index.html
+
   - name: copy nginx site.conf
     template:
       src: ./config/hello.conf
