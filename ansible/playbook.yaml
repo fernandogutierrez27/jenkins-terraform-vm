@@ -34,7 +34,7 @@
 
   - name: copy nginx site.conf
     template:
-      src: ./sote/hello.conf
+      src: ./site/hello.conf
       dest: /etc/nginx/sites-enabled/default/hello.conf
       owner: root
       group: root
