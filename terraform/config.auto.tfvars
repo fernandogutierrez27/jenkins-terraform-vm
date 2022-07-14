@@ -19,6 +19,18 @@ vm_list = {
         name    = "vm4"
         size    = "Standard_B1s"
     },
+    "vm5" = {
+        name    = "vm5"
+        size    = "Standard_B1s"
+    },
+    "vm6" = {
+        name    = "vm6"
+        size    = "Standard_B1s"
+    },
+    "vm7" = {
+        name    = "vm7"
+        size    = "Standard_B1s"
+    },
 }
 
 nsg_rules = [
